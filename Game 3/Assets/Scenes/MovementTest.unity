@@ -164,7 +164,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMotor
   groundSpeed: 8
-  aerialSpeed: 0.6
   jumpForce: 3.5
   groundCheckTransform: {fileID: 1210869514}
   eastWallCheckTransform: {fileID: 762516035}
@@ -176,6 +175,7 @@ MonoBehaviour:
     m_Bits: 8
   groundAcceleration: 70
   aerialAcceleration: 2.5
+  pulseForce: 12
 --- !u!1 &260716701
 GameObject:
   m_ObjectHideFlags: 0
@@ -431,7 +431,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.5, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 242438757}
@@ -502,7 +502,7 @@ MonoBehaviour:
   m_ActionEvents: []
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Keyboard&Mouse
-  m_DefaultActionMap: 
+  m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!114 &326883971

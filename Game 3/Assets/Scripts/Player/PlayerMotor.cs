@@ -23,6 +23,10 @@ public class PlayerMotor : MonoBehaviour
     [Tooltip("How quickly inertia catches up to the input direction while airborne. Keep low to mimic zero gravity.")]
     public float aerialAcceleration = 3f;
 
+    [Header("Pulse Gun")]
+    [Tooltip("Strength of impulse applied to player when firing the Pulse Gun")]
+    public float pulseForce = 8f;
+
     // Various bools to check if player is colliding with solid surfaces
     // isOnWall = isOnWallE || isOnWallW
     // isColliding is true if any of these are true
@@ -37,9 +41,16 @@ public class PlayerMotor : MonoBehaviour
     private Vector2 velocity, inertia = Vector2.zero;
     private Rigidbody2D rb;
 
+    // Whether player has a Pulse Gun charge
+    private bool hasPulseGunCharge = true;
+
+    // Main camera reference for world-space mouse position
+    private Camera mainCamera;
+
     void Awake()
     {
         inputActions = new PlayerInput();
+        mainCamera = Camera.main;
     }
 
     void OnEnable()
@@ -47,6 +58,7 @@ public class PlayerMotor : MonoBehaviour
         inputActions.Player.Enable();
         inputActions.Player.Move.performed += Movement;
         inputActions.Player.Jump.performed += Jump;
+        inputActions.Player.Fire.performed += Fire;
 
         inputActions.Player.Move.canceled += Movement;
         inputActions.Player.Jump.canceled += Jump;
@@ -57,6 +69,7 @@ public class PlayerMotor : MonoBehaviour
         inputActions.Player.Disable();
         inputActions.Player.Move.performed -= Movement;
         inputActions.Player.Jump.performed -= Jump;
+        inputActions.Player.Fire.performed -= Fire;
     }
 
     void Movement(InputAction.CallbackContext ctx)
@@ -89,6 +102,36 @@ public class PlayerMotor : MonoBehaviour
         }
     }
 
+    void Fire(InputAction.CallbackContext ctx)
+    {
+        if (!ctx.performed)
+        {
+            return;
+        }
+
+        // If no pulse charge, return
+        if (!hasPulseGunCharge)
+        {
+            return;
+        }
+
+        // Convert mouse screen position to world space position
+        Vector2 mousePos = mainCamera.ScreenToWorldPoint(Mouse.current.position.ReadValue());
+
+        // Get direction from player to mouse, impulse results in opposite direction
+        Vector2 toMouse = (mousePos - (Vector2)transform.position).normalized;
+        Vector2 impulseDir = -toMouse;
+
+        // Overwrite inertia with impulse so there's an immediate movement change
+        inertia = impulseDir * pulseForce;
+
+        // Pulse gun only uses charge when airborne, otherwise retain charge for this pulse
+        if (!isColliding)
+        {
+            hasPulseGunCharge = false;
+        }
+    }
+
     void Start()
     {
         rb = GetComponentInParent<Rigidbody2D>();
@@ -103,6 +146,12 @@ public class PlayerMotor : MonoBehaviour
         isOnWallW = Physics2D.OverlapCircle(westWallCheckTransform.position, collisionCheckRadius, groundLayer);
         isOnWall = (isOnWallE || isOnWallW);
         isColliding = (isOnGround || isOnCeiling || isOnWall);
+
+        // Pulse Gun always has a charge if on a surface
+        if (isColliding)
+        {
+            hasPulseGunCharge = true;
+        }
 
         // Inertia steering
         // On each surface, only the axis the surface controls is steered toward input
