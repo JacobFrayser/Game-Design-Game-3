@@ -7,7 +7,6 @@ public class PlayerMotor : MonoBehaviour
 
     [Header("General")]
     public float groundSpeed = 5.0f;
-    public float aerialSpeed = 0.2f;
     public float jumpForce = 1.0f;
 
     [Header("Surface Checks")]
@@ -123,10 +122,13 @@ public class PlayerMotor : MonoBehaviour
         }
         else
         {
-            // Airborne - nudge full inertia vector toward input
-            // This preserves jump arcs while still giving the player some steering
-            Vector2 target = velocity * groundSpeed;
-            inertia = Vector2.MoveTowards(inertia, target, aerialAcceleration * Time.deltaTime);
+            // Airborne - reworked so that velocity is 100% preserved when no input is held
+            // When input is held, THEN process inertia, otherwise don't do anything
+            if (velocity.SqrMagnitude() >= 0.01f)
+            {
+                Vector2 target = velocity * groundSpeed;
+                inertia = Vector2.MoveTowards(inertia, target, aerialAcceleration * Time.deltaTime);
+            }
         }
 
         rb.linearVelocity = inertia;
