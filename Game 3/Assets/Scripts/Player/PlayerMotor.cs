@@ -132,6 +132,11 @@ public class PlayerMotor : MonoBehaviour
         }
     }
 
+    public void RefreshPulseCharge()
+    {
+        hasPulseGunCharge = true;
+    }
+
     void Start()
     {
         rb = GetComponentInParent<Rigidbody2D>();
