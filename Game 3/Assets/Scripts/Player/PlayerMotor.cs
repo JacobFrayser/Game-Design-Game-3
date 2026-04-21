@@ -132,6 +132,12 @@ public class PlayerMotor : MonoBehaviour
         }
     }
 
+    public void SetVelocity(Vector2 newVelocity)
+    {
+        velocity = newVelocity;
+        inertia = newVelocity;
+    }
+
     public void RefreshPulseCharge()
     {
         hasPulseGunCharge = true;
@@ -159,7 +165,7 @@ public class PlayerMotor : MonoBehaviour
         }
 
         // Inertia steering
-        // On each surface, only the axis the surface controls is steered toward input
+        // On each surface, only the axis the surface matches is steered toward input
         // The other axis is left alone, so jump impulses on the free axis decay naturally
         // rather than being zeroed out
         if (isOnGround || isOnCeiling)

@@ -2,15 +2,15 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public void Die()
     {
-        
-    }
+        // Since RespawnManagers are per-scene, always check if one is present before respawning
+        if (RespawnManager.Instance == null)
+        {
+            Debug.LogError("<Player> No RespawnManager found in scene!");
+            return;
+        }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        RespawnManager.Instance.Respawn(this);
     }
 }
