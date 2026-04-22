@@ -8,13 +8,24 @@ public class PlayerMotor : MonoBehaviour
     [Header("General")]
     public float groundSpeed = 5.0f;
     public float jumpForce = 1.0f;
+    private float jumpGraceTimer = 0f;
+    private const float JumpGraceDuration = 0.1f;
 
     [Header("Surface Checks")]
     public Transform groundCheckTransform;
     public Transform eastWallCheckTransform;
     public Transform westWallCheckTransform;
     public Transform ceilingCheckTransform;
-    public float collisionCheckRadius;
+    // Corner checks prevent getting stuck on corner geometry
+    public Transform groundCheckL;
+    public Transform groundCheckR;
+    public Transform ceilingCheckL;
+    public Transform ceilingCheckR;
+    public Transform eastWallCheckU;
+    public Transform eastWallCheckD;
+    public Transform westWallCheckU;
+    public Transform westWallCheckD;
+    public float collisionCheckRadius = 0.035f;
     public LayerMask groundLayer;
 
     [Header("Inertia")]
@@ -28,6 +39,16 @@ public class PlayerMotor : MonoBehaviour
     public float pulseForce = 8f;
     private CrosshairController crosshair;
 
+    private enum Surface
+    {
+        AIRBORNE,
+        GROUND,
+        CEILING,
+        WALL
+    }
+    // Current surface the player is snapped to
+    private Surface activeSurface = Surface.AIRBORNE;
+
     // Various bools to check if player is colliding with solid surfaces
     // isOnWall = isOnWallE || isOnWallW
     // isColliding is true if any of these are true
@@ -37,6 +58,12 @@ public class PlayerMotor : MonoBehaviour
     private bool isOnCeiling = false;
     private bool isOnWall = false;
     private bool isColliding = false;
+    // Context for which surface was touched most recently
+    private bool wasOnGround = false;
+    private bool wasOnCeiling = false;
+    private bool wasOnWallW = false;
+    private bool wasOnWallE = false;
+
     // Velocity is input direction
     // Inertia is actual movement direction, smoothed to Velocity over time
     private Vector2 velocity, inertia = Vector2.zero;
@@ -88,18 +115,22 @@ public class PlayerMotor : MonoBehaviour
         if (isOnGround)
         {
             inertia.y = jumpForce;
+            jumpGraceTimer = JumpGraceDuration;
         }
         else if (isOnCeiling)
         {
             inertia.y = -jumpForce;
+            jumpGraceTimer = JumpGraceDuration;
         }
         else if (isOnWallW)
         {
             inertia.x = jumpForce;
+            jumpGraceTimer = JumpGraceDuration;
         }
         else if (isOnWallE)
         {
             inertia.x = -jumpForce;
+            jumpGraceTimer = JumpGraceDuration;
         }
     }
 
@@ -116,6 +147,12 @@ public class PlayerMotor : MonoBehaviour
             return;
         }
 
+        // If sandwiched between two surfaces, don't fire
+        if ((isOnGround && isOnCeiling) || (isOnWallW && isOnWallE))
+        {
+            return;
+        }
+
         if (crosshair == null)
         {
             Debug.LogError("<Player Motor> No CrosshairController found on parent player!");
@@ -126,6 +163,7 @@ public class PlayerMotor : MonoBehaviour
         // AimDirection already points from player to crosshair, so just invert it
         inertia = -crosshair.AimDirection * pulseForce;
         hasPulseGunCharge = false;
+        jumpGraceTimer = JumpGraceDuration;
     }
 
     public void SetVelocity(Vector2 newVelocity)
@@ -147,48 +185,145 @@ public class PlayerMotor : MonoBehaviour
 
     void Update()
     {
-        // Check bools
-        isOnGround = Physics2D.OverlapCircle(groundCheckTransform.position, collisionCheckRadius, groundLayer);
-        isOnCeiling = Physics2D.OverlapCircle(ceilingCheckTransform.position, collisionCheckRadius, groundLayer);
-        isOnWallE = Physics2D.OverlapCircle(eastWallCheckTransform.position, collisionCheckRadius, groundLayer);
-        isOnWallW = Physics2D.OverlapCircle(westWallCheckTransform.position, collisionCheckRadius, groundLayer);
-        isOnWall = (isOnWallE || isOnWallW);
-        isColliding = (isOnGround || isOnCeiling || isOnWall);
+        // Tick down grace period for jump
+        if (jumpGraceTimer > 0f)
+        {
+            jumpGraceTimer -= Time.deltaTime;
+        }
 
-        // Pulse Gun always has a charge if on a surface
+        // Check bools
+        UpdateCollisionState();
+        UpdateActiveSurface();
+        ApplyInertia();
+
+        rb.linearVelocity = inertia;
+    }
+
+    private void UpdateCollisionState()
+    {
+        // Last frame's state is saved first
+        wasOnGround = isOnGround;
+        wasOnCeiling = isOnCeiling;
+        wasOnWallE = isOnWallE;
+        wasOnWallW = isOnWallW;
+
+        // Check collisions
+        isOnGround = (CheckCollision(groundCheckTransform) || CheckCollision(groundCheckL) || CheckCollision(groundCheckR));
+        isOnCeiling = (CheckCollision(ceilingCheckTransform) || CheckCollision(ceilingCheckL) || CheckCollision(ceilingCheckR));
+        isOnWallE = (CheckCollision(eastWallCheckTransform) || CheckCollision(eastWallCheckU) || CheckCollision(eastWallCheckD));
+        isOnWallW = (CheckCollision(westWallCheckTransform) || CheckCollision(westWallCheckU) || CheckCollision(westWallCheckD));
+
+        isOnWall = isOnWallE || isOnWallW;
+        isColliding = isOnWall || isOnGround || isOnCeiling;
+
+        // Pulse Gun Charge refresh
         if (isColliding)
         {
             hasPulseGunCharge = true;
         }
+    }
 
-        // Inertia steering
-        // On each surface, only the axis the surface matches is steered toward input
-        // The other axis is left alone, so jump impulses on the free axis decay naturally
-        // rather than being zeroed out
-        if (isOnGround || isOnCeiling)
+    private bool CheckCollision(Transform t)
+    {
+        if (t == null)
         {
-            // Ground and ceiling - steer inertia.x toward input
-            float targetX = velocity.x * groundSpeed;
-            inertia.x = Mathf.MoveTowards(inertia.x, targetX, groundAcceleration * Time.deltaTime);
+            return false;
+        }
+        return Physics2D.OverlapCircle(t.position, collisionCheckRadius, groundLayer);
+    }
+
+    private void UpdateActiveSurface()
+    {
+        // Detect colliding with new surface type
+        bool newGround = isOnGround && !wasOnGround;
+        bool newCeiling = isOnCeiling && !wasOnCeiling;
+        bool newWallE = isOnWallE && !wasOnWallE;
+        bool newWallW = isOnWallW && !wasOnWallW;
+        bool newWall = newWallE || newWallW;
+
+        // Transition to new surface
+        // If colliding with a new wall and ground/ceiling at the same time,
+        // ground/ceiling take priority
+        if (newGround)
+        {
+            activeSurface = Surface.GROUND;
+        }
+        else if (newCeiling)
+        {
+            activeSurface = Surface.CEILING;
+        }
+        else if (newWall)
+        {
+            activeSurface = Surface.WALL;
+        }
+
+        if (!isColliding)
+        {
+            activeSurface = Surface.AIRBORNE;
+        }
+
+        // If an active surface is left, fall back to a surface that is
+        // still being touched or airborne if none
+        if (activeSurface == Surface.GROUND && !isOnGround)
+        {
+            FallbackSurface();
+        }
+        if (activeSurface == Surface.CEILING && !isOnCeiling)
+        {
+            FallbackSurface();
+        }
+        if (activeSurface == Surface.WALL && !isOnWall)
+        {
+            FallbackSurface();
+        }
+    }
+
+    private void FallbackSurface()
+    {
+        if (isOnGround)
+        {
+            activeSurface = Surface.GROUND;
+        }
+        else if (isOnCeiling)
+        {
+            activeSurface = Surface.CEILING;
         }
         else if (isOnWall)
         {
-            // Walls - steer inertia.y toward input
-            float targetY = velocity.y * groundSpeed;
-            inertia.y = Mathf.MoveTowards(inertia.y, targetY, groundAcceleration * Time.deltaTime);
+            activeSurface = Surface.WALL;
         }
         else
         {
-            // Airborne - reworked so that velocity is 100% preserved when no input is held
-            // When input is held, THEN process inertia, otherwise don't do anything
-            if (velocity.SqrMagnitude() >= 0.01f)
-            {
-                Vector2 target = velocity * groundSpeed;
-                inertia = Vector2.MoveTowards(inertia, target, aerialAcceleration * Time.deltaTime);
-            }
+            activeSurface = Surface.AIRBORNE;
         }
+    }
 
-        rb.linearVelocity = inertia;
+    private void ApplyInertia()
+    {
+        switch (activeSurface)
+        {
+            case Surface.GROUND:
+            case Surface.CEILING:
+                // Horizontal
+                inertia.x = Mathf.MoveTowards(inertia.x, velocity.x * groundSpeed, groundAcceleration * Time.deltaTime);
+                if (jumpGraceTimer <= 0f) inertia.y = 0f;
+                break;
+
+            case Surface.WALL:
+                // Vertical
+                inertia.y = Mathf.MoveTowards(inertia.y, velocity.y * groundSpeed, groundAcceleration * Time.deltaTime);
+                if (jumpGraceTimer <= 0f) inertia.x = 0f;
+                break;
+
+            case Surface.AIRBORNE:
+                // Any axis, only move if input given
+                if (velocity.SqrMagnitude() >= 0.01f)
+                {
+                    Vector2 target = velocity * groundSpeed;
+                    inertia = Vector2.MoveTowards(inertia, velocity * groundSpeed, aerialAcceleration * Time.deltaTime);
+                }
+                break;
+        }
     }
 
     private void OnDrawGizmosSelected()
@@ -198,5 +333,13 @@ public class PlayerMotor : MonoBehaviour
         Gizmos.DrawWireSphere(ceilingCheckTransform.position, collisionCheckRadius);
         Gizmos.DrawWireSphere(eastWallCheckTransform.position, collisionCheckRadius);
         Gizmos.DrawWireSphere(westWallCheckTransform.position, collisionCheckRadius);
+        Gizmos.DrawWireSphere(groundCheckL.position, collisionCheckRadius);
+        Gizmos.DrawWireSphere(groundCheckR.position, collisionCheckRadius);
+        Gizmos.DrawWireSphere(ceilingCheckL.position, collisionCheckRadius);
+        Gizmos.DrawWireSphere(ceilingCheckR.position, collisionCheckRadius);
+        Gizmos.DrawWireSphere(eastWallCheckU.position, collisionCheckRadius);
+        Gizmos.DrawWireSphere(eastWallCheckD.position, collisionCheckRadius);
+        Gizmos.DrawWireSphere(westWallCheckU.position, collisionCheckRadius);
+        Gizmos.DrawWireSphere(westWallCheckD.position, collisionCheckRadius);
     }
 }
