@@ -11,7 +11,7 @@ public class ScreenFader : MonoBehaviour
     public Image fadeImage;
 
     [Header("Settings")]
-    public float fadeSpeed = 2f;
+    public float fadeSpeed = 1f;
 
     private Coroutine currentRoutine;
 

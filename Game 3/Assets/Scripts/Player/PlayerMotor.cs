@@ -26,6 +26,7 @@ public class PlayerMotor : MonoBehaviour
     [Header("Pulse Gun")]
     [Tooltip("Strength of impulse applied to player when firing the Pulse Gun")]
     public float pulseForce = 8f;
+    private CrosshairController crosshair;
 
     // Various bools to check if player is colliding with solid surfaces
     // isOnWall = isOnWallE || isOnWallW
@@ -115,21 +116,16 @@ public class PlayerMotor : MonoBehaviour
             return;
         }
 
-        // Convert mouse screen position to world space position
-        Vector2 mousePos = mainCamera.ScreenToWorldPoint(Mouse.current.position.ReadValue());
-
-        // Get direction from player to mouse, impulse results in opposite direction
-        Vector2 toMouse = (mousePos - (Vector2)transform.position).normalized;
-        Vector2 impulseDir = -toMouse;
-
-        // Overwrite inertia with impulse so there's an immediate movement change
-        inertia = impulseDir * pulseForce;
-
-        // Pulse gun only uses charge when airborne, otherwise retain charge for this pulse
-        if (!isColliding)
+        if (crosshair == null)
         {
-            hasPulseGunCharge = false;
+            Debug.LogError("<Player Motor> No CrosshairController found on parent player!");
+            return;
         }
+
+        // Overwrite inertia with AimDirection from crosshair so there's an immediate movement change
+        // AimDirection already points from player to crosshair, so just invert it
+        inertia = -crosshair.AimDirection * pulseForce;
+        hasPulseGunCharge = false;
     }
 
     public void SetVelocity(Vector2 newVelocity)
@@ -146,6 +142,7 @@ public class PlayerMotor : MonoBehaviour
     void Start()
     {
         rb = GetComponentInParent<Rigidbody2D>();
+        crosshair = GetComponentInParent<CrosshairController>();
     }
 
     void Update()

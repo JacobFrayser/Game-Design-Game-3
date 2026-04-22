@@ -6,6 +6,7 @@ public class MainMenu : MonoBehaviour
     public void PlayGame()
     {
         ScreenFader.Instance.FadeToScene("Frayser's Dev Scene");
+        SoundManager.Instance.FadeOutMusic();
     }
 
     public void QuitGame()
