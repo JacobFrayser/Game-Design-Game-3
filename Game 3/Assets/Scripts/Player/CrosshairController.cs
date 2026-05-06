@@ -7,14 +7,22 @@ public class CrosshairController : MonoBehaviour
     // Crosshair child game object to position within ring
     public Transform crosshairTransform;
 
+    // Renderer on crosshair sprite. Used to disable the crosshair visual when on a surface using Default movement style
+    public Renderer crosshairRenderer;
+
+    // Renderer on ring line. Used to disable the ring visual when on a surface using Default movement style
+    public Renderer ringRenderer;
+
     // Radius of the ring to be displayed and to confine the crosshair to
     public float ringRadius = 1.75f;
 
     // Crosshair sensitivity
     public float sensitivity = 0.015f;
 
-    // Angle of crosshair on ring, in radians, defaults to pointing East (0)
+    // Angle of crosshair on ring
     private Vector2 crosshairOffset = Vector2.zero;
+
+    private PlayerMotor motor;
 
     // Normalized direction from player to crosshair, used to determine pulse gun aim
     // Defaults to straight down when crosshair is perfectly centered
@@ -45,6 +53,12 @@ public class CrosshairController : MonoBehaviour
         Cursor.visible = false;
     }
 
+    private void Start()
+    {
+        // Get player motor to check whether player is grounded
+        motor = GetComponentInChildren<PlayerMotor>();
+    }
+
     void Update()
     {
        if (crosshairTransform == null)
@@ -52,11 +66,44 @@ public class CrosshairController : MonoBehaviour
             return;
        }
 
-        ProcessMouseDelta();
-        PositionCrosshair();
+        GameSettings.MovementStyle style = GetStyle();
+
+        UpdateVisibility(style);
+
+        switch (style)
+        {
+            case GameSettings.MovementStyle.DEFAULT:
+                UpdateDefault();
+                break;
+            case GameSettings.MovementStyle.PRECISE:
+                UpdatePrecise();
+                break;
+        }
+
+        crosshairTransform.localPosition = crosshairOffset;
     }
 
-    private void ProcessMouseDelta()
+    private void UpdateVisibility(GameSettings.MovementStyle style)
+    {
+        bool visible = true;
+
+        // Using Default mode, hide crosshair and ring while on any surface
+        if (style == GameSettings.MovementStyle.DEFAULT && motor != null)
+        {
+            visible = motor.IsAirborne;
+        }
+
+        if (crosshairRenderer != null)
+        {
+            crosshairRenderer.enabled = visible;
+        }
+        if (ringRenderer != null)
+        {
+            ringRenderer.enabled = visible;
+        }
+    }
+
+    private void UpdatePrecise()
     {
         Vector2 mouseDelta = Mouse.current.delta.ReadValue();
         if (mouseDelta.sqrMagnitude < 0.001f)
@@ -69,12 +116,54 @@ public class CrosshairController : MonoBehaviour
         crosshairOffset = Vector2.ClampMagnitude(crosshairOffset, ringRadius);
     }
 
-    private void PositionCrosshair()
+    private void UpdateDefault()
     {
-        // Local position keeps crosshair relative to player
-        // rather than allowing camera movement to change crosshair position
-        // through being a child object of the player
-        crosshairTransform.localPosition = crosshairOffset;
+        // Don't update crosshair position when not airborne
+        if (motor != null && !motor.IsAirborne)
+        {
+            return;
+        }
+
+        // Get input keys and add/subtract 1 from respective axis
+        float x = 0f, y = 0f;
+
+        if (Keyboard.current.wKey.isPressed)
+        {
+            y += 1f;
+        }
+        if (Keyboard.current.sKey.isPressed)
+        {
+            y -= 1f;
+        }
+        if (Keyboard.current.aKey.isPressed)
+        {
+            x -= 1f;
+        }
+        if (Keyboard.current.dKey.isPressed)
+        {
+            x += 1f;
+        }
+
+        Vector2 input = new Vector2(x, y);
+
+        // If no input given, return
+        if (input.sqrMagnitude <= 0.01f )
+        {
+            return;
+        }
+
+        // Snap crosshair to ring perimeter
+        crosshairOffset = input.normalized * ringRadius;
+    }
+
+    private GameSettings.MovementStyle GetStyle()
+    {
+        if (GameSettings.Instance != null)
+        {
+            return GameSettings.Instance.CurrentMovementStyle;
+        }
+
+        return GameSettings.MovementStyle.DEFAULT;
     }
 
     private void OnDisable()

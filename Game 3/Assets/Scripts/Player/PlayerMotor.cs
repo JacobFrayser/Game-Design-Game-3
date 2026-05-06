@@ -27,6 +27,7 @@ public class PlayerMotor : MonoBehaviour
     public Transform westWallCheckD;
     public float collisionCheckRadius = 0.035f;
     public LayerMask groundLayer;
+    public bool IsAirborne => activeSurface == Surface.AIRBORNE;
 
     [Header("Inertia")]
     [Tooltip("How quickly inertia catches up to the input direction while on a surface. Higher = snappier.")]
@@ -103,6 +104,7 @@ public class PlayerMotor : MonoBehaviour
     void Movement(InputAction.CallbackContext ctx)
     {
         velocity = ctx.ReadValue<Vector2>();
+        Debug.Log($"<Player Motor> Movement callback fired: {velocity}");
     }
 
     void Jump(InputAction.CallbackContext ctx)
@@ -149,6 +151,12 @@ public class PlayerMotor : MonoBehaviour
 
         // If sandwiched between two surfaces, don't fire
         if ((isOnGround && isOnCeiling) || (isOnWallW && isOnWallE))
+        {
+            return;
+        }
+
+        // If on a surface and DEFAULT style is active, return
+        if (!IsAirborne && GameSettings.Instance.CurrentMovementStyle == GameSettings.MovementStyle.DEFAULT)
         {
             return;
         }
@@ -316,8 +324,9 @@ public class PlayerMotor : MonoBehaviour
                 break;
 
             case Surface.AIRBORNE:
+                bool preciseMode = (GameSettings.Instance.CurrentMovementStyle == GameSettings.MovementStyle.PRECISE);
                 // Any axis, only move if input given
-                if (velocity.SqrMagnitude() >= 0.01f)
+                if (preciseMode && velocity.sqrMagnitude >= 0.01f)
                 {
                     Vector2 target = velocity * groundSpeed;
                     inertia = Vector2.MoveTowards(inertia, velocity * groundSpeed, aerialAcceleration * Time.deltaTime);

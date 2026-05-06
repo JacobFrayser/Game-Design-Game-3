@@ -21,8 +21,10 @@ public class SoundManager : MonoBehaviour
     private static SoundManager _instance;
 
     [Header("Volume")]
-    [Range(0f, 1f)] public float sfxVolume = 0.33f;
-    [Range(0f, 1f)] public float musicVolume = 0.33f;
+    [Range(0f, 1f)] public float defaultSfxVolume = 0.4f;
+    [Range(0f, 1f)] public float defaultMusicVolume = 0.4f;
+    public float sfxVolumeSetting = 0.8f;
+    public float musicVolumeSetting = 0.8f;
 
     // Controls whether the next music track to play will fade in or not
     // False by default so main menu music doesn't fade in
@@ -57,11 +59,11 @@ public class SoundManager : MonoBehaviour
         musicSource = gameObject.AddComponent<AudioSource>();
         musicSource.playOnAwake = false;
         musicSource.loop = true;
-        musicSource.volume = musicVolume;
+        musicSource.volume = defaultMusicVolume * musicVolumeSetting;
     }
     
     // SFX-specific PlaySound method
-    public void PlaySound(AudioClip clip, float volumeScale = 1f)
+    public void PlaySound(AudioClip clip)
     {
         // Calling a null clip won't brick the system
         if (clip == null)
@@ -69,7 +71,7 @@ public class SoundManager : MonoBehaviour
             return;
         }
 
-        sfxSource.PlayOneShot(clip, sfxVolume * volumeScale);
+        sfxSource.PlayOneShot(clip, defaultSfxVolume * sfxVolumeSetting);
     }
 
     // Music-specific PlayMusic method (separate to allow for checking current clip)
@@ -96,7 +98,7 @@ public class SoundManager : MonoBehaviour
         }
         else
         {
-            musicSource.volume = musicVolume;
+            musicSource.volume = defaultMusicVolume * musicVolumeSetting;
         }
         
         musicSource.Play();
@@ -140,7 +142,7 @@ public class SoundManager : MonoBehaviour
         }
 
         musicSource.Stop();
-        musicSource.volume = musicVolume; // Set musicFadedOut to true so next track will fade in
+        musicSource.volume = defaultMusicVolume * musicVolumeSetting; // Set musicFadedOut to true so next track will fade in
     }
 
     private IEnumerator FadeInRoutine()
@@ -150,10 +152,22 @@ public class SoundManager : MonoBehaviour
         while (elapsed < 1f)
         {
             elapsed += Time.deltaTime;
-            musicSource.volume = Mathf.Lerp(0f, musicVolume, elapsed);
+            musicSource.volume = Mathf.Lerp(0f, defaultMusicVolume * musicVolumeSetting, elapsed);
             yield return null;
         }
 
-        musicSource.volume = musicVolume;
+        musicSource.volume = defaultMusicVolume * musicVolumeSetting;
+    }
+
+    public void SetSFXVolume(float volume)
+    {
+        sfxVolumeSetting = volume;
+        sfxSource.volume = defaultSfxVolume * sfxVolumeSetting;
+    }
+
+    public void SetMusicVolume(float volume)
+    {
+        musicVolumeSetting = volume;
+        musicSource.volume = defaultMusicVolume * musicVolumeSetting;
     }
 }
