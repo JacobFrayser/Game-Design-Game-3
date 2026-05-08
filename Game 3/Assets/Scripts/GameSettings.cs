@@ -13,7 +13,7 @@ public class GameSettings : MonoBehaviour
         PRECISE // Mouse aims cursor, WASD influences aerial movement slightly
     }
 
-    public MovementStyle CurrentMovementStyle { get; private set; } = MovementStyle.DEFAULT;
+    public MovementStyle CurrentMovementStyle { get; private set; } = MovementStyle.PRECISE;
 
     private void Awake()
     {

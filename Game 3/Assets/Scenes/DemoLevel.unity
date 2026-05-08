@@ -2529,11 +2529,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 242438756}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d95df6b1a77abc4886705a5f25fbf9a, type: 3}
+  m_Script: {fileID: 11500000, guid: 37594d0ae7a270f47b0a0b2b597f9342, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerMotor
-  groundSpeed: 8
-  jumpForce: 5
+  m_EditorClassIdentifier: Assembly-CSharp::NewPlayerMotor
+  groundSpeed: 7
+  jumpForce: 7
+  maxGroundSpeed: 8
+  maxAirSpeed: 6
+  groundAccelerationForce: 15
+  airAccelerationForce: 5
+  groundDecelerationForce: 15
+  airDecelerationForce: 2
+  maxVelocity: 10
+  horizontalSpeed: 0
+  verticalSpeed: 0
+  totalSpeed: 0
   groundCheckTransform: {fileID: 1210869514}
   eastWallCheckTransform: {fileID: 762516035}
   westWallCheckTransform: {fileID: 1482575274}
@@ -2550,9 +2560,10 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
-  groundAcceleration: 75
-  aerialAcceleration: 2.125
-  pulseForce: 12
+  pulseForce: 14
+  wallSlideDeceleration: 15
+  wallJumpForce: {x: 6, y: 10}
+  wallJumpGraceDistance: 0.1
 --- !u!1001 &251204927
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3402,7 +3413,7 @@ Rigidbody2D:
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_GravityScale: 0
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: bdd154135fb0b2b4ba9c7bd5a366040b, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -3411,7 +3422,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!212 &326883967
 SpriteRenderer:
@@ -19427,6 +19438,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: BlueOrb
       objectReference: {fileID: 0}
+    - target: {fileID: 8822077409919902236, guid: 6189a45eb4c989e47bfb92fc511c2f7a, type: 3}
+      propertyPath: m_FlipY
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8822077409919902236, guid: 6189a45eb4c989e47bfb92fc511c2f7a, type: 3}
+      propertyPath: m_Size.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8822077409919902236, guid: 6189a45eb4c989e47bfb92fc511c2f7a, type: 3}
+      propertyPath: m_Size.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8822077409919902236, guid: 6189a45eb4c989e47bfb92fc511c2f7a, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 4787149800311244695, guid: 7e825032e12c32842858b3b85b60424b, type: 3}
     - target: {fileID: 8996043224713955568, guid: 6189a45eb4c989e47bfb92fc511c2f7a, type: 3}
       propertyPath: m_LocalPosition.x
       value: -7.41
