@@ -33,6 +33,10 @@ public class RespawnManager : MonoBehaviour
         player.transform.position = spawnPoint.position;
         player.GetComponentInChildren<PlayerMotor>().SetVelocity(Vector2.zero);
 
+        // Re-enable Pulse Gun so spawning in midair is not suddenly game-ending
+        PlayerMotor motor = player.GetComponentInChildren<PlayerMotor>();
+        motor.RefreshPulseCharge();
+
         // Re-enable all Blue Orbs within this level that were previously collected
         BlueOrb[] orbs = FindObjectsByType<BlueOrb>(FindObjectsInactive.Include, FindObjectsSortMode.None);
 

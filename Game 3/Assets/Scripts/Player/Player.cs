@@ -13,4 +13,20 @@ public class Player : MonoBehaviour
 
         RespawnManager.Instance.Respawn(this);
     }
+
+    public void SetMovementEnabled(bool enabled)
+    {
+        PlayerMotor motor = GetComponentInChildren<PlayerMotor>();
+        if (motor == null) return;
+
+        if (enabled)
+        {
+            motor.enabled = true;
+        }
+        else
+        {
+            motor.enabled = false;
+            GetComponent<Rigidbody2D>().linearVelocity = Vector2.zero;
+        }
+    }
 }

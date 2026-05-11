@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System.Collections;
+using System.IO;
 
 public class ScreenFader : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class ScreenFader : MonoBehaviour
 
     [Header("UI Reference")]
     public Image fadeImage;
+    public Image flashImage;
 
     [Header("Settings")]
     public float fadeSpeed = 1f;
@@ -91,6 +93,29 @@ public class ScreenFader : MonoBehaviour
 
         fadeImage.color = new Color(0, 0, 0, 0f);
         fadeImage.gameObject.SetActive(false);
+    }
+
+    public void Flash(Color color, float duration)
+    {
+        StartCoroutine(FlashRoutine(color, duration));
+    }
+
+    private IEnumerator FlashRoutine(Color color, float duration)
+    {
+        flashImage.color = color;
+        flashImage.gameObject.SetActive(true);
+
+        // Fade from 0.4 alpha to full transparent
+        float elapsed = 0f;
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+            float alpha = Mathf.Lerp(0.35f, 0f, elapsed / duration);
+            flashImage.color = new Color(color.r, color.g, color.b, alpha);
+            yield return null;
+        }
+
+        flashImage.gameObject.SetActive(false);
     }
 
     void OnDisable()

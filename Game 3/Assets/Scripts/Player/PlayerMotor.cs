@@ -7,7 +7,7 @@ public class PlayerMotor : MonoBehaviour
 
     [Header("General")]
     public float groundSpeed = 5.0f;
-    public float jumpForce = 1.0f;
+    public float jumpForce = 6.5f;
     private float jumpGraceTimer = 0f;
     private const float JumpGraceDuration = 0.1f;
 
