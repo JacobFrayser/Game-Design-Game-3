@@ -925,6 +925,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3406946414736502325, guid: bcabcf85795e2994daefbb880b53d28d, type: 3}
+      propertyPath: m_SortingOrder
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 8779886892752555908, guid: bcabcf85795e2994daefbb880b53d28d, type: 3}
       propertyPath: m_Name
       value: Spike (4)
@@ -6139,6 +6143,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3406946414736502325, guid: bcabcf85795e2994daefbb880b53d28d, type: 3}
+      propertyPath: m_SortingOrder
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 8779886892752555908, guid: bcabcf85795e2994daefbb880b53d28d, type: 3}
       propertyPath: m_Name
       value: Spike (7)
@@ -8213,6 +8221,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3406946414736502325, guid: bcabcf85795e2994daefbb880b53d28d, type: 3}
+      propertyPath: m_SortingOrder
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 8779886892752555908, guid: bcabcf85795e2994daefbb880b53d28d, type: 3}
       propertyPath: m_Name
       value: Spike (2)
@@ -9268,6 +9280,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3406946414736502325, guid: bcabcf85795e2994daefbb880b53d28d, type: 3}
+      propertyPath: m_SortingOrder
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 8779886892752555908, guid: bcabcf85795e2994daefbb880b53d28d, type: 3}
       propertyPath: m_Name
       value: Spike (1)
@@ -9600,6 +9616,10 @@ PrefabInstance:
     - target: {fileID: 407952969988949262, guid: bcabcf85795e2994daefbb880b53d28d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3406946414736502325, guid: bcabcf85795e2994daefbb880b53d28d, type: 3}
+      propertyPath: m_SortingOrder
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 8779886892752555908, guid: bcabcf85795e2994daefbb880b53d28d, type: 3}
       propertyPath: m_Name
@@ -14060,6 +14080,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3406946414736502325, guid: bcabcf85795e2994daefbb880b53d28d, type: 3}
+      propertyPath: m_SortingOrder
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 8779886892752555908, guid: bcabcf85795e2994daefbb880b53d28d, type: 3}
       propertyPath: m_Name
       value: Spike (5)
@@ -16013,6 +16037,10 @@ PrefabInstance:
     - target: {fileID: 407952969988949262, guid: bcabcf85795e2994daefbb880b53d28d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3406946414736502325, guid: bcabcf85795e2994daefbb880b53d28d, type: 3}
+      propertyPath: m_SortingOrder
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 8779886892752555908, guid: bcabcf85795e2994daefbb880b53d28d, type: 3}
       propertyPath: m_Name
@@ -19222,6 +19250,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3406946414736502325, guid: bcabcf85795e2994daefbb880b53d28d, type: 3}
+      propertyPath: m_SortingOrder
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 8779886892752555908, guid: bcabcf85795e2994daefbb880b53d28d, type: 3}
       propertyPath: m_Name
       value: Spike
@@ -19438,6 +19470,10 @@ PrefabInstance:
     - target: {fileID: 1492454754317013047, guid: 3c16ace35d9651f4ba9c3ff3f74c5b34, type: 3}
       propertyPath: m_Name
       value: LevelEndGoal
+      objectReference: {fileID: 0}
+    - target: {fileID: 6595066632496117744, guid: 3c16ace35d9651f4ba9c3ff3f74c5b34, type: 3}
+      propertyPath: nextScene
+      value: Level2
       objectReference: {fileID: 0}
     - target: {fileID: 7997086216407740150, guid: 3c16ace35d9651f4ba9c3ff3f74c5b34, type: 3}
       propertyPath: m_LocalPosition.x

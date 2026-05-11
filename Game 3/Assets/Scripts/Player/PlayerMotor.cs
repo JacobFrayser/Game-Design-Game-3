@@ -167,6 +167,18 @@ public class PlayerMotor : MonoBehaviour
             return;
         }
 
+        // Return if using Space under PRECISE style
+        if (ctx.control.path.Contains("space") && GameSettings.Instance?.CurrentMovementStyle != GameSettings.MovementStyle.DEFAULT)
+        {
+            return;
+        }
+
+        // Return if using Left Click under DEFAULT style
+        if (ctx.control.path.Contains("leftButton") && GameSettings.Instance?.CurrentMovementStyle != GameSettings.MovementStyle.PRECISE)
+        {
+            return;
+        }
+
         // Overwrite inertia with AimDirection from crosshair so there's an immediate movement change
         // AimDirection already points from player to crosshair, so just invert it
         inertia = -crosshair.AimDirection * pulseForce;

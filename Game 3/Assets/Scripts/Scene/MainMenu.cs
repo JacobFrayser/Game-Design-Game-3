@@ -16,7 +16,7 @@ public class MainMenu : MonoBehaviour
     public void PlayGame()
     {
         SoundManager.Instance.FadeOutMusic();
-        ScreenFader.Instance.FadeToScene("DemoLevel");
+        ScreenFader.Instance.FadeToScene("Level1");
     }
 
     public void QuitGame()
