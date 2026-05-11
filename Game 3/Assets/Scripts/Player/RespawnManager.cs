@@ -43,4 +43,10 @@ public class RespawnManager : MonoBehaviour
 
         Debug.Log($"<Respawn Manager> Respawned player at {spawnPoint.position} and " + $"re-enabled {orbs.Length} orb(s).");
     }
+
+    public void SetSpawnPoint(Transform newSpawn)
+    {
+        spawnPoint = newSpawn;
+        Debug.Log($"<Respawn Manager> Spawn Point updated to {newSpawn.position}");
+    }
 }
