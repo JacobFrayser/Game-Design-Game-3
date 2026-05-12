@@ -3415,8 +3415,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6afed9344499a824d90077a26b474506, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SoundManager
-  defaultSfxVolume: 0.4
-  defaultMusicVolume: 0.4
+  defaultSfxVolume: 0.425
+  defaultMusicVolume: 0.425
   sfxVolumeSetting: 0.8
   musicVolumeSetting: 0.8
 --- !u!82 &1690630533

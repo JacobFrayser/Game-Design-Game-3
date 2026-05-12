@@ -168,13 +168,13 @@ public class PlayerMotor : MonoBehaviour
         }
 
         // Return if using Space under PRECISE style
-        if (ctx.control.path.Contains("space") && GameSettings.Instance?.CurrentMovementStyle != GameSettings.MovementStyle.DEFAULT)
+        if (ctx.control.path.Contains("space") && GameSettings.Instance?.CurrentMovementStyle == GameSettings.MovementStyle.PRECISE)
         {
             return;
         }
 
         // Return if using Left Click under DEFAULT style
-        if (ctx.control.path.Contains("leftButton") && GameSettings.Instance?.CurrentMovementStyle != GameSettings.MovementStyle.PRECISE)
+        if (ctx.control.path.Contains("leftButton") && GameSettings.Instance?.CurrentMovementStyle == GameSettings.MovementStyle.DEFAULT)
         {
             return;
         }
@@ -300,6 +300,7 @@ public class PlayerMotor : MonoBehaviour
 
     private void FallbackSurface()
     {
+        // Used to fix bugs with surfaces being touched but not registered
         if (isOnGround)
         {
             activeSurface = Surface.GROUND;
@@ -349,6 +350,7 @@ public class PlayerMotor : MonoBehaviour
 
     private void OnDrawGizmosSelected()
     {
+        // Purely to display the small collision circles on player object
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(groundCheckTransform.position, collisionCheckRadius);
         Gizmos.DrawWireSphere(ceilingCheckTransform.position, collisionCheckRadius);

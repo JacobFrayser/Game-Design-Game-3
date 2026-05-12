@@ -84,6 +84,7 @@ public class PauseMenu : MonoBehaviour
 
     public void QuitToMenu()
     {
+        StopAllCoroutines();
         Time.timeScale = 1f;
         SceneManager.LoadScene("MainMenu");
     }
