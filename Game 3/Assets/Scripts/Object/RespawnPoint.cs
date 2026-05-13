@@ -2,7 +2,17 @@ using UnityEngine;
 
 public class RespawnPoint : MonoBehaviour
 {
-    private bool hasBeenActivated = false; // Prevents re-activation if player stays in trigger zone
+    public Sprite activatedSprite;
+
+    // Prevents re-activation if player stays in trigger zone
+    private bool hasBeenActivated = false;
+
+    private SpriteRenderer sprite;
+
+    void Start()
+    {
+        sprite = GetComponent<SpriteRenderer>();
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -19,5 +29,10 @@ public class RespawnPoint : MonoBehaviour
 
         RespawnManager.Instance.SetSpawnPoint(transform);
         hasBeenActivated = true;
+
+        if (sprite != null && activatedSprite != null)
+        {
+            sprite.sprite = activatedSprite;
+        }
     }
 }

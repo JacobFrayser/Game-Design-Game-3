@@ -105,6 +105,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d52714855c570a14fb8560571e3badc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RespawnPoint
+  activatedSprite: {fileID: 21300000, guid: 22cd24de956921f41b2f5518fd4dc176, type: 3}
 --- !u!68 &625045068098010643
 EdgeCollider2D:
   m_ObjectHideFlags: 0
