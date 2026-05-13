@@ -72,7 +72,7 @@ public class PlayerMotor : MonoBehaviour
     private Rigidbody2D rb;
 
     // Whether player has a Pulse Gun charge
-    private bool hasPulseGunCharge = true;
+    public bool hasPulseGunCharge = true;
 
     // Main camera reference for world-space mouse position
     private Camera mainCamera;
