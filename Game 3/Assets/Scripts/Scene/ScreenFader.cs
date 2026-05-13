@@ -105,7 +105,7 @@ public class ScreenFader : MonoBehaviour
         flashImage.color = color;
         flashImage.gameObject.SetActive(true);
 
-        // Fade from 0.4 alpha to full transparent
+        // Fade from 0.35 alpha to full transparent
         float elapsed = 0f;
         while (elapsed < duration)
         {
@@ -122,5 +122,43 @@ public class ScreenFader : MonoBehaviour
     {
         if (currentRoutine != null)
             StopCoroutine(currentRoutine);
+    }
+
+    // Used as separate function from above for same-scene fading (on death, for example)
+    public void FadeToBlack(float duration, System.Action onComplete = null)
+    {
+        if (currentRoutine != null)
+        {
+            StopCoroutine(currentRoutine);
+        }
+        currentRoutine = StartCoroutine(FadeToBlackRoutine(duration, onComplete));
+    }
+
+    public void FadeFromBlack(float duration)
+    {
+        if (currentRoutine != null)
+        {
+            StopCoroutine(currentRoutine);
+        }
+        currentRoutine = StartCoroutine(FadeIn());
+    }
+
+    private IEnumerator FadeToBlackRoutine(float duration, System.Action onComplete)
+    {
+        if (fadeImage == null) yield break;
+
+        // Set fade image to be active so it's visible when fading
+        fadeImage.gameObject.SetActive(true);
+
+        // Do the fade
+        float t = 0f;
+        while (t < 1f)
+        {
+            t += Time.deltaTime / duration;
+            fadeImage.color = new Color(0f, 0f, 0f, Mathf.Clamp01(t));
+            yield return null;
+        }
+
+        onComplete?.Invoke();
     }
 }
