@@ -1,0 +1,559 @@
+fileFormatVersion: 2
+guid: 23060cea2e9331d4bbfcdbcfdec982ae
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -6440726623991842907
+    second: Blaster_Particles_0
+  - first:
+      213: -1829001615756522607
+    second: Blaster_Particles_1
+  - first:
+      213: 7530655107136176117
+    second: Blaster_Particles_2
+  - first:
+      213: 3525451610837873213
+    second: Blaster_Particles_3
+  - first:
+      213: -3962611740164226856
+    second: Blaster_Particles_4
+  - first:
+      213: -1597807253150264357
+    second: Blaster_Particles_5
+  - first:
+      213: -4357532412979643402
+    second: Blaster_Particles_6
+  - first:
+      213: 788996850513594733
+    second: Blaster_Particles_7
+  - first:
+      213: 968427966825380161
+    second: Blaster_Particles_8
+  - first:
+      213: -1529864684350435131
+    second: Blaster_Particles_9
+  - first:
+      213: 2581437285944284783
+    second: Blaster_Particles_10
+  - first:
+      213: 755957757808742745
+    second: Blaster_Particles_11
+  - first:
+      213: -186930884950752182
+    second: Blaster_Particles_12
+  - first:
+      213: 2010343546845068290
+    second: Blaster_Particles_13
+  - first:
+      213: 3125721405617822421
+    second: Blaster_Particles_14
+  - first:
+      213: -4629129569511506395
+    second: Blaster_Particles_15
+  - first:
+      213: -5624703479144301949
+    second: Blaster_Particles_16
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Blaster_Particles_0
+      rect:
+        serializedVersion: 2
+        x: 61
+        y: 1374
+        width: 377
+        height: 626
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5a7b0998241fd96a0800000000000000
+      internalID: -6440726623991842907
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blaster_Particles_1
+      rect:
+        serializedVersion: 2
+        x: 686
+        y: 1624
+        width: 127
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 19b873f88b41e96e0800000000000000
+      internalID: -1829001615756522607
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blaster_Particles_2
+      rect:
+        serializedVersion: 2
+        x: 1061
+        y: 1374
+        width: 377
+        height: 626
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5ff35dabbe2428860800000000000000
+      internalID: 7530655107136176117
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blaster_Particles_3
+      rect:
+        serializedVersion: 2
+        x: 1561
+        y: 1499
+        width: 252
+        height: 252
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d32f1d8bf8bece030800000000000000
+      internalID: 3525451610837873213
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blaster_Particles_4
+      rect:
+        serializedVersion: 2
+        x: 61
+        y: 1124
+        width: 127
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8d008bcfd99f109c0800000000000000
+      internalID: -3962611740164226856
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blaster_Particles_5
+      rect:
+        serializedVersion: 2
+        x: 436
+        y: 999
+        width: 377
+        height: 377
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bd39f60d4c273d9e0800000000000000
+      internalID: -1597807253150264357
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blaster_Particles_6
+      rect:
+        serializedVersion: 2
+        x: 936
+        y: 1249
+        width: 127
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6fbf81b8b5fe683c0800000000000000
+      internalID: -4357532412979643402
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blaster_Particles_7
+      rect:
+        serializedVersion: 2
+        x: 1311
+        y: 1124
+        width: 127
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d69c3cb847413fa00800000000000000
+      internalID: 788996850513594733
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blaster_Particles_8
+      rect:
+        serializedVersion: 2
+        x: 1811
+        y: 1249
+        width: 127
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1493e29da1c807d00800000000000000
+      internalID: 968427966825380161
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blaster_Particles_9
+      rect:
+        serializedVersion: 2
+        x: 686
+        y: 124
+        width: 377
+        height: 877
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5c090e6dc24d4cae0800000000000000
+      internalID: -1529864684350435131
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blaster_Particles_10
+      rect:
+        serializedVersion: 2
+        x: 1061
+        y: 999
+        width: 127
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f6658a6d88b13d320800000000000000
+      internalID: 2581437285944284783
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blaster_Particles_11
+      rect:
+        serializedVersion: 2
+        x: 1311
+        y: 374
+        width: 377
+        height: 627
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 95114635393bd7a00800000000000000
+      internalID: 755957757808742745
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blaster_Particles_12
+      rect:
+        serializedVersion: 2
+        x: 1686
+        y: 874
+        width: 127
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a4406fcb953e76df0800000000000000
+      internalID: -186930884950752182
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blaster_Particles_13
+      rect:
+        serializedVersion: 2
+        x: 186
+        y: 749
+        width: 127
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 20cf23afdcc26eb10800000000000000
+      internalID: 2010343546845068290
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blaster_Particles_14
+      rect:
+        serializedVersion: 2
+        x: 61
+        y: 0
+        width: 377
+        height: 626
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5da5fa0ce0bc06b20800000000000000
+      internalID: 3125721405617822421
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blaster_Particles_15
+      rect:
+        serializedVersion: 2
+        x: 1186
+        y: 124
+        width: 127
+        height: 252
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 52e7206ce2702cfb0800000000000000
+      internalID: -4629129569511506395
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blaster_Particles_16
+      rect:
+        serializedVersion: 2
+        x: 1686
+        y: 124
+        width: 127
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 38a33b69cf901f1b0800000000000000
+      internalID: -5624703479144301949
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Blaster_Particles_0: -6440726623991842907
+      Blaster_Particles_1: -1829001615756522607
+      Blaster_Particles_10: 2581437285944284783
+      Blaster_Particles_11: 755957757808742745
+      Blaster_Particles_12: -186930884950752182
+      Blaster_Particles_13: 2010343546845068290
+      Blaster_Particles_14: 3125721405617822421
+      Blaster_Particles_15: -4629129569511506395
+      Blaster_Particles_16: -5624703479144301949
+      Blaster_Particles_2: 7530655107136176117
+      Blaster_Particles_3: 3525451610837873213
+      Blaster_Particles_4: -3962611740164226856
+      Blaster_Particles_5: -1597807253150264357
+      Blaster_Particles_6: -4357532412979643402
+      Blaster_Particles_7: 788996850513594733
+      Blaster_Particles_8: 968427966825380161
+      Blaster_Particles_9: -1529864684350435131
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

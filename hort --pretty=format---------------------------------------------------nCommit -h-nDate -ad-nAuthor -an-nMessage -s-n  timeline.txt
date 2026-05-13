@@ -1,0 +1,197 @@
+--------------------------------------------------
+Commit: 1d1fd41
+Date: 2026-03-28
+Author: JacobFrayser
+Message: Initial commit
+
+--------------------------------------------------
+Commit: fcdacd2
+Date: 2026-03-28
+Author: JacobFrayser
+Message: Setup Unity 2D Environment
+
+--------------------------------------------------
+Commit: 69cea3f
+Date: 2026-03-31
+Author: Matthew Loyed
+Message: Add project structure files and add vscode to git ignore.
+
+--------------------------------------------------
+Commit: 7b69466
+Date: 2026-04-03
+Author: JacobFrayser
+Message: [Feat] Added Basic Movement and Surface Snapping
+
+--------------------------------------------------
+Commit: a59d0a2
+Date: 2026-04-15
+Author: JacobFrayser
+Message: [Change] Modified PlayerMotor to Remove Aerial Friction
+
+--------------------------------------------------
+Commit: 5c9f02d
+Date: 2026-04-15
+Author: JacobFrayser
+Message: [Feat] Added Basic Pulse Gun Functionality
+
+--------------------------------------------------
+Commit: cf9b742
+Date: 2026-04-20
+Author: JacobFrayser
+Message: [Feat] Added functionality for collecting a "Blue Orb"
+
+--------------------------------------------------
+Commit: 60220a9
+Date: 2026-04-21
+Author: Matthew Loyed
+Message: Add MainMenu Functionality.
+
+--------------------------------------------------
+Commit: 7cc45ed
+Date: 2026-04-21
+Author: Matthew Loyed
+Message: Add Pause Menu and Restart functionality.
+
+--------------------------------------------------
+Commit: 71d50ae
+Date: 2026-04-21
+Author: JacobFrayser
+Message: [Feat] Added Death Zone class and Respawn method
+
+--------------------------------------------------
+Commit: f83b721
+Date: 2026-04-21
+Author: Bwicks302
+Message: Energy Orb sprite added
+
+--------------------------------------------------
+Commit: 29718df
+Date: 2026-04-21
+Author: JacobFrayser
+Message: [Feat] Added Main Menu and Level Music, Pulse Gun Crosshair
+
+--------------------------------------------------
+Commit: efc7765
+Date: 2026-04-22
+Author: JacobFrayser
+Message: [Feat] Added Demo Level, Updated Sound Volumes, Updated Movement
+
+--------------------------------------------------
+Commit: 7724e73
+Date: 2026-04-22
+Author: borgerandfries
+Message: Background added
+
+--------------------------------------------------
+Commit: d5abf87
+Date: 2026-04-22
+Author: borgerandfries
+Message: [Feat] Added Bad Levels
+
+--------------------------------------------------
+Commit: eb1a2cf
+Date: 2026-05-01
+Author: borgerandfries
+Message: Updated Playtest Level
+
+--------------------------------------------------
+Commit: 17ac794
+Date: 2026-05-06
+Author: JacobFrayser
+Message: Feature Expansion for Playtest
+
+--------------------------------------------------
+Commit: 60d0a2d
+Date: 2026-05-07
+Author: Bwicks302
+Message: Added Spike and Laser Hazard textures
+
+--------------------------------------------------
+Commit: c6d4559
+Date: 2026-05-07
+Author: Bwicks302
+Message: Added 8x8 Spike texture
+
+--------------------------------------------------
+Commit: cfa253b
+Date: 2026-05-10
+Author: Bwicks302
+Message: Added unpressed and pressed spring textures
+
+--------------------------------------------------
+Commit: d5a3763
+Date: 2026-05-10
+Author: Bwicks302
+Message: Added Restart Button texture
+
+--------------------------------------------------
+Commit: a66572e
+Date: 2026-05-10
+Author: JacobFrayser
+Message: [Feat] Added preliminary stuff for Respawn Point object
+
+--------------------------------------------------
+Commit: ac025b3
+Date: 2026-05-11
+Author: JacobFrayser
+Message: [Feat] Finalized Spawnpoint logic and Level Goals/Transitions
+
+--------------------------------------------------
+Commit: a33d4a9
+Date: 2026-05-11
+Author: JacobFrayser
+Message: [Feat] Added Prefabs for Level End Goal and Respawn Point
+
+--------------------------------------------------
+Commit: 6a0a92a
+Date: 2026-05-11
+Author: borgerandfries
+Message: [FEAT] Level 1 added
+
+--------------------------------------------------
+Commit: c5f484f
+Date: 2026-05-11
+Author: borgerandfries
+Message: Update PlayTestMaybe.unity
+
+--------------------------------------------------
+Commit: 262756f
+Date: 2026-05-11
+Author: borgerandfries
+Message: [FEAT] True level one pushed
+
+--------------------------------------------------
+Commit: f043336
+Date: 2026-05-11
+Author: JacobFrayser
+Message: [Fix] Updated Level 1 and Updated Level Order
+
+--------------------------------------------------
+Commit: faecfa0
+Date: 2026-05-11
+Author: borgerandfries
+Message: Update Level 1fr.unity
+
+--------------------------------------------------
+Commit: 02de3d1
+Date: 2026-05-11
+Author: borgerandfries
+Message: Merge branch 'main' of https://github.com/JacobFrayser/Game-Design-Game-3
+
+--------------------------------------------------
+Commit: 86ac577
+Date: 2026-05-11
+Author: borgerandfries
+Message: [FEAT] Level 3 finished
+
+--------------------------------------------------
+Commit: a5a4647
+Date: 2026-05-11
+Author: JacobFrayser
+Message: [Feat] Added Level 2 and transitions
+
+--------------------------------------------------
+Commit: 6f1d3a7
+Date: 2026-05-11
+Author: JacobFrayser
+Message: Changes made right before presentation

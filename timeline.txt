@@ -1,0 +1,1 @@
+hort --pretty\=format:---------------------------------------------------nCommit:\ -h-nDate:\ -ad-nAuthor:\ -an-nMessage:\ -s-n
