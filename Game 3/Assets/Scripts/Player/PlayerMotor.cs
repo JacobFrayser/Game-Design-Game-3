@@ -38,6 +38,7 @@ public class PlayerMotor : MonoBehaviour
     [Header("Pulse Gun")]
     [Tooltip("Strength of impulse applied to player when firing the Pulse Gun")]
     public float pulseForce = 8f;
+    public AudioClip pulseSFX;
     private CrosshairController crosshair;
 
     private enum Surface
@@ -184,6 +185,19 @@ public class PlayerMotor : MonoBehaviour
         inertia = -crosshair.AimDirection * pulseForce;
         hasPulseGunCharge = false;
         jumpGraceTimer = JumpGraceDuration;
+
+        // SFX for firing Pulse Gun
+        SoundManager.Instance.PlaySound(pulseSFX);
+
+        //// Fire particles
+        //if (pulseVFX != null)
+        //{
+        //    Debug.Log("VFX firing");
+        //    // Rotate VFX object to face aim direction first
+        //    float angle = Mathf.Atan2(crosshair.AimDirection.y, crosshair.AimDirection.x) * Mathf.Rad2Deg;
+        //    pulseVFX.transform.rotation = Quaternion.Euler(0f, 0f, angle);
+        //    pulseVFX.Play();
+        //}
     }
 
     public void SetVelocity(Vector2 newVelocity)

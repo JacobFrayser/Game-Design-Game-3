@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: e328685b61a7c7c4ea4cde04997ad055
+guid: 17084bd0d18394b4eb435e68a69462eb
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 9037517731259774769
-    second: Button2_Template_0
+      213: -357770267383004172
+    second: ss_starfarer_title_v2_with_aurora_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -96,17 +96,30 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Button2_Template_0
+      name: ss_starfarer_title_v2_with_aurora_0
       rect:
         serializedVersion: 2
-        x: 26
-        y: 69
-        width: 98
-        height: 61
+        x: 0
+        y: 0
+        width: 1748
+        height: 720
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 13778076e76bb6d70800000000000000
-      internalID: 9037517731259774769
+      spriteID: 4f3807d56d1f80bf0800000000000000
+      internalID: -357770267383004172
       vertices: []
       indices: 
       edges: []
@@ -135,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Button2_Template_0: 9037517731259774769
+      ss_starfarer_title_v2_with_aurora_0: -357770267383004172
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

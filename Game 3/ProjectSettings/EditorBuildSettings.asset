@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Frayser's Dev Scene.unity
     guid: ce27332b1b4c7184c8f08a06fb3934ee
   - enabled: 1
-    path: Assets/Scenes/MainMenu.unity
+    path: Assets/Scenes/MainMenuOld.unity
     guid: b1061a067e638f249a9d13f1fff3eaaf
   - enabled: 1
     path: Assets/Scenes/Level1.unity
@@ -29,6 +29,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Level4.unity
     guid: d6fbee1177f7c264babacff168be286a
+  - enabled: 1
+    path: Assets/Scenes/Level5.unity
+    guid: b473aa1df540bee4e812427d2affb4b0
+  - enabled: 1
+    path: Assets/Scenes/EndScreen.unity
+    guid: e5c5d649a3b5dc14d89e3b60dbc2ae56
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

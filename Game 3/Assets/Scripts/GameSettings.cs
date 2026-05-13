@@ -6,6 +6,7 @@ public class GameSettings : MonoBehaviour
 
     [Range(0f, 1f)] public float sfxVolume = 0.8f;
     [Range(0f, 1f)] public float musicVolume = 0.8f;
+    [Range(0.05f, 1.25f)] public float mouseSens = 1.0f;
 
     public enum MovementStyle
     {
@@ -43,5 +44,11 @@ public class GameSettings : MonoBehaviour
     {
         CurrentMovementStyle = style;
         Debug.Log($"<Game Settings> Movement style set to {style}");
+    }
+
+    public void SetMouseSens(float sens)
+    {
+        // Mouse Sensitivity to be used under the PRECISE style
+        mouseSens = sens;
     }
 }

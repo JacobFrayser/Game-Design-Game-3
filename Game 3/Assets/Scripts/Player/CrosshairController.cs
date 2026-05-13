@@ -111,8 +111,17 @@ public class CrosshairController : MonoBehaviour
             return;
         }
 
-        // Process mouse delta in world-space, clamp to within ring
-        crosshairOffset += mouseDelta * sensitivity;
+        // Default sensSetting to 1.0x
+        float sensSetting = 1.0f;
+
+        // Grab Sensitivity setting if settings are present
+        if (GameSettings.Instance != null)
+        {
+            sensSetting = GameSettings.Instance.mouseSens;
+        }
+
+        // Apply sensSetting as multiplier, process mouse delta in world-space, clamp to within ring
+        crosshairOffset += mouseDelta * sensitivity * sensSetting;
         crosshairOffset = Vector2.ClampMagnitude(crosshairOffset, ringRadius);
     }
 

@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 3fad52778e22ce644bf98806fa1baa5f
+guid: e3b30048905045f47a0d0fe58af69953
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5096212877750776375
-    second: Death_Particles_0
+      213: -8261804010578479685
+    second: Button0_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Death_Particles_0
+      name: Button0_0
       rect:
         serializedVersion: 2
-        x: 61
+        x: 0
         y: 0
-        width: 1877
-        height: 2000
+        width: 320
+        height: 320
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7323b168c9269b640800000000000000
-      internalID: 5096212877750776375
+      spriteID: bb57299760d285d80800000000000000
+      internalID: -8261804010578479685
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Death_Particles_0: 5096212877750776375
+      Button0_0: -8261804010578479685
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
