@@ -336,14 +336,14 @@ public class PlayerMotor : MonoBehaviour
                 if (jumpGraceTimer <= 0f) inertia.x = 0f;
                 break;
 
-            case Surface.AIRBORNE:
-                bool preciseMode = (GameSettings.Instance.CurrentMovementStyle == GameSettings.MovementStyle.PRECISE);
-                // Any axis, only move if input given
-                if (preciseMode && velocity.sqrMagnitude >= 0.01f)
-                {
-                    Vector2 target = velocity * groundSpeed;
-                    inertia = Vector2.MoveTowards(inertia, velocity * groundSpeed, aerialAcceleration * Time.deltaTime);
-                }
+            case Surface.AIRBORNE: // REMOVED for precise style since it allows levels to be completely cheesed
+                //bool preciseMode = (GameSettings.Instance.CurrentMovementStyle == GameSettings.MovementStyle.PRECISE);
+                //// Any axis, only move if input given
+                //if (preciseMode && velocity.sqrMagnitude >= 0.01f)
+                //{
+                //    Vector2 target = velocity * groundSpeed;
+                //    inertia = Vector2.MoveTowards(inertia, velocity * groundSpeed, aerialAcceleration * Time.deltaTime);
+                //}
                 break;
         }
     }
